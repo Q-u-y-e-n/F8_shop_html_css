@@ -1,0 +1,543 @@
+/* dựng cấu hình css cho những thành phần riếng */
+
+/* định dạng cho nguyên phần header */
+.header{
+    height: var(--header-height);
+    background-image: linear-gradient(0,#fe6433,#f53e2d );
+    
+}
+
+/* định dạng cho thẻ ul */
+.navbar__list{
+    list-style: none;
+    padding-left: 0;
+    margin: 7px 0 0 0;
+    cursor: pointer;
+
+
+}
+/* định dang các thẻ li trên thanh navbar */
+.navbar--item{
+    display: inline-block;
+    /* làm cho các thẻ li nằm theo hàng ngang */
+    margin: 0 8px;
+    position: relative;
+    /* gắn này chút lấy ra làm tọa độ để hiển thị thông báo */
+    min-height: 26px;
+    /* độ cao nhỏ nhất là 26px */
+
+    
+}
+/* định dạng cho 2 thẻ ul trên thanh navbar */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    /* cho 2 thẻ ul cách nhau ra hai bên trái phải trình duyệt */
+    
+}
+/* định dạng cỡ chữ, màu chữ trên thanh navbar (li,a) */
+.navbar--item, .navbar--item--link{
+    font-size: 1.4rem;
+    /* vì 62.5% tương ứng với 10px => 1.4rem = 14px */
+    color: var(--white-color);
+    text-decoration: none;
+    /* bỏ di dấu gạch chân của thẻ a */
+     font-weight:300;
+     /* độ âm của chữ */
+
+}
+/* định dạng làm mờ khi di chuột vào của chữ trên thanh navbar (li, a, icon)*/
+.navbar--item:hover, .navbar--item--link:hover, .navbar--item--link-fb:hover{
+    /* opacity: 0.8; k thể sử dụng thuộc tính này vì khi ta css đề lên thì k thực hiện được*/
+    color: rgba(255, 255, 255, 0.7) ;
+}
+
+/* định dạng tô đậm cho đăng nhập và đăng kí */
+.navbar--item--link--bolb{
+    font-weight: 400;
+    box-sizing: border-box;
+    /* thêm dô đặn nó có to ra thì kích thước cũng k thay đổi để bằng với mấy đứa li */
+}
+
+/* định dạng cho dấu ngạch ngăn cách trên thanh navbar */
+.navbar--item--separate::after{
+    content:"";
+    /* k có chữ */
+    display: block;
+    /* content và display là cố định */
+    position: absolute;
+    /* lấy mốc là thẻ li */
+    width: 1px;
+    height: 12px;
+    background-color:#fb9086;
+    right: -9px;
+    top: 0;
+    transform: translateY(10%);
+    /* này là để di chuyển trượt dọc nè và lấy mốc là từ trên xuống 10%  */
+}
+
+/* định dạng cho icon fb */
+.navbar--item--link-fb{
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: var(--white-color);
+    transform: translateY(2px);
+    /* định đang bằng transform mơi mốt có thêm dì dô hay chèn thì nó cũng dễ sửa, ý là nó bấm dính và co dãn được */
+    margin: 0 4px;
+   
+   
+}
+
+
+/* định dạng vị trí cho icon trên thanh navbar (li, a, icon) */
+.navbar--item, .navbar--item--link, .navbar--item--link-fb{
+    display: inline-block;
+    /* cho các icocn nằm cùng 1 hàng dí li á */
+    align-items: center;
+    /* cho mẻ nằm ở giữa theo chiều dọc là cross axis */
+}
+
+/* định dạng chữ kết nối giống k bấm vào được */
+.navbar--item--bot_opa{
+    color: var(--white-color);
+    cursor: text;
+}
+/* định dạng cho cả thông báo QR code bao gồm chữ trên thanh navbar */
+.navbar--item--open__QRCode{
+
+}
+/* định dạng cho khối QR code, không tính chữ trên thanh navbar */
+.navbar__QR{
+    background-color: var(--white-color);
+    width: 186px;
+    position:absolute;
+    /* lấy li làm mốc */
+    top: 100%;
+    /* thông báo sẽ dịch xuống 100% thẻ li từ top  */
+    left: 0;
+    padding: 8px;
+    border-radius: 2px;
+    display: none;
+    /* ẩn khối này khỏi layout giống như chưa từng viết cái mã này vào*/
+    animation: fadeIn ease-in 0.3s;
+    /* hỏng định dạng chiều cao cho khối này là vì nó sẽ tự chiếm chỗ từ trên xuống dưới trong không gian của thẻ div
+    nên xét thuộc tính height cho nó thì hồi mắc công chỉnh sửa */
+}
+
+
+
+/* trường hợp có khẽ hở giữa khối ul và khối QR code thì khi di chuột vào khoảng hở đó 
+nó sẽ không hiển QR code  */
+
+/* khắc phục bằng cách tạo 1 khối nhỏ để kết nối chúng lại với nhau */
+
+/* .navbar__QR::before{
+    content: "";
+    display: block;
+    background-color: #f53e2d;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0;
+    height: 20px;
+} */
+
+/* định dạng cho hình mã QR code */
+.navbar__QR-img{
+    width: 100%;
+    /* hiển thị chiều ngang 100% cái khối chứa nó */
+
+}
+/* định dạng cho 2 ảnh */
+.anh{
+    height: 16px;
+    
+}
+/* định dạng cho cả 2 link hình ảnh */
+.QRapp{
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 11px 0 11px;
+   
+}
+/* cách khác để cho 2 đầu của hình thằng hàng với QR code
+
+.QRapp--link:nth-child(1){
+    margin-left: 11px;  
+}
+.QRapp--link:nth-child(2){
+    margin-left: 11px;  
+}
+*/
+
+/* định dạng của animation hiển thị QR code  */
+/* hover trong trường hợp này được hiểu là những css được viết trong này sẽ được apply vào class navbar khi hover vào
+class .navbar--item__show--QR */
+.navbar--item__show--QR:hover .navbar__QR{
+    display: block;
+    /* hiển thị lại cái khối QR code 
+    -- ở đây miễn là thuộc tính khác display: none thì nó sẽ hiển hiển thị lại  */
+}
+
+/* CSS cho tính năng hiển thị thống báo  */
+
+/* cả khối thông báo */
+.nav__notify{
+    position: absolute;
+    top: 118%;
+    /* 100% này là của thẻ li */
+    width: 404px;
+    right: 0px;
+    background-color: var(--white-color);
+    border: 1px solid RGB(201, 201, 201);
+    cursor: default;
+    /* bỏ dấu bàn tay khi di chuột vào header của thông báo
+    còn những thành phần còn lại trong khối thì vẫn hiện hình bàn tay bình thường */
+    animation: show_notify ease-in-out 0.3s;
+    will-change:opacity, transform ;
+    /* viết như này để tối ưu chuyển động cho opacity và transform */
+    /* cho trình duyệt biết là cái thuộc tính hay animation gì sẽ thay đổi ở trong đối tượng này */
+    transform-origin: calc(100% - 20px) top;
+    /* nếu sử dụng hàm calc nếu sau này có sửa đổi chiều dài của khối thông báo thì cũng k cần chỉnh sửa quá nhiều */
+    /* số đầu tiên là dịch vị trí sang 90% của box và nằm ở top */
+    /* thuộc tính này dùng để định vị ại vị trí xuất hiện khối thông báo ban đầu */
+    display: none;   
+}
+
+.nav__notify::before{
+    content: "";
+    display: block;
+    border-style:solid ;
+    border-width:20px 30px; 
+    border-color: transparent  transparent var(--white-color)  transparent  ;
+    /* transparent: màu trong suốt */
+    position: absolute;
+    right: 2px;
+    top: -30px;
+
+}
+
+.nav__notify::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    right: 0;
+    top: -20px;
+    background-color: transparent;
+
+
+}
+
+
+.navbar--item--showNoti:hover .nav__notify{
+    display: inline-block;
+}
+
+/* định dạng phần header của thông báo */
+.nav__notify--header{
+    height: 40px;
+    background-color: var(--white-color);
+    /* cursor: text; */
+    /* hiển thị con trỏ soạn văn bản khi di chuột vào header
+    nhung chỉ css thành phần nào có thể copy đươc thôi
+    còn trong phần header thì k đc */
+    user-select: none;
+    /* hiển thị con trỏ vào k cho copy dòng này */
+}
+.nav__notify--header h3{
+    color:#999;
+    margin: 0 0 0 12px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 40px;
+    /* chiều cao của dòng bằng chiều cao của thằng chứa nó 
+    thì nó sẽ tự căn giữa chữ vào chính giữa */
+}
+
+.nav__notify--footer h3{
+    color:#383838;
+   text-align: center;
+    font-weight: 400;
+    font-size: 1.4rem;
+    /* chiều cao của dòng bằng chiều cao của thằng chứa nó 
+    thì nó sẽ tự căn giữa chữ vào chính giữa */
+    margin: 8px auto;
+}
+
+.nav__notify--link-footer{
+    text-decoration: none;
+   
+}
+
+/* định dạng cho các thẻ ul là các thông báo chứa trong khối */
+.nav__notify--list{
+    padding-left: 0px;
+   
+}
+
+.nav__notify--link:hover{
+    background-color: rgb(241, 240, 240);
+}
+.nav__notify--item{
+   
+}
+/* phải css vào trực tiếp thẻ chứa 2 thành phần đó thì nó mới lên */
+.nav__notify--link{
+    display: flex;
+    /* justify-content: space-evenly; */
+    padding: 12px;
+    text-decoration: none;
+    background-color:RGBA(254, 84, 48, 0.1)  ;
+    transition: backgroud-color ease 1s;
+   
+}
+.nav__notify--info{
+    margin-left: 12px;
+   
+}
+.nav__notify--name{
+    display: block;
+    /* để 2 cái span xuống dòng */
+    color: #272727;
+    font-weight: 400;
+    font-size: 1.4rem;
+    padding-bottom: 10px;
+}
+.nav__notify--discription{
+    display: block;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+.nav__notify--img{
+    width: 48px;
+    object-fit: contain;
+    /* giống như thuộc tính của background-size 
+    thuộc tính này làm cho ảnh khi đặt flex k bị méo ảnh*/
+    /* ta có thể làm ảnh k bị méo bằng 1 cách nữa đó là bỏ thẻ img vào trong thẻ khác ví dụ như thẻ <span> */
+   
+}
+
+@keyframes show_notify{
+    from{
+        transform:scale(0);
+        opacity:0;
+        /* scale : là độ lớn lên  
+        tức là điểm đầu rất nhỏ*/
+        /* vị trí hiển thị ban đầu là tâm của khối thông báo */
+    }
+    to{
+        transform:scale(1);
+        /* trở về kích thước ban đầu của thông báo */
+        opacity: 1;
+    }
+}
+
+
+
+/* authen modal */
+
+
+.auth-form{
+    min-width: 500px;
+    border-radius: 5px;
+    background-color: var(--white-color);
+    /* khi box con vượt quá box cha thì ẩn nó đi */
+    overflow: hidden;
+}
+
+
+/* thẻ input */
+.auth-form__input{
+    height: 40px;
+    width: 100%;
+    margin-top: 16px;
+    padding:0 12px;
+    font-size: 1.4rem;
+    border: 1px solid var(--border-color);
+
+    outline: none;
+    border-radius: 2px;
+}
+/* focus con trỏ  chuột đậm hơn */
+.auth-form__input:focus{
+    border-color: #8888;
+}
+
+
+.auth-form__container{
+    padding: 0 32px;
+}
+.auth-form__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    margin-top: 12px;
+
+}
+/* chữ đăng kí */
+.auth-form__heading{
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--text-color);
+    cursor: default;
+
+}
+
+.auth-form__switch-btn{
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+
+.auth-form__aside{
+    margin-top: 20px;
+}
+
+.auth-form__policy--text{
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    /* căn chữ ở giữ cái dòng đấy */
+    text-align:center;
+    padding: 4px;
+
+}
+
+.auth-form__text-link{
+    text-decoration: none;;
+    color: var(--primary-color);
+
+
+}
+
+.auth-form__socials{
+    background-color: #f5f5f5f5;
+    padding: 10px 32px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+   
+}
+
+.btn.btn--with-icon{
+    /* min-width: 175px;
+    height: 30px;
+    margin: 0 8px; */
+}
+
+/* nút trở lại trong form đăng kí */
+.auth-form__controls{
+    display: flex;
+    justify-content: flex-end;
+    
+
+}
+
+.auth-form__socials--icon{
+    font-size: 1.8rem;
+}
+
+
+.text{
+    color: var(--white-color);
+}
+.auth-form__socials--fb{
+    
+    background-color: #3A5A98;
+}
+
+.auth-form__socials--icon{
+    color: var(--white-color);
+}
+
+
+.auth-form__socials--gg{
+    background-color: beige;
+}
+
+
+.kc{
+    margin: 0 36px;
+}
+
+
+/* phần login */
+.auth-form__hepl{
+    display:flex;
+    justify-content: flex-end;
+
+
+}
+.auth-form__help--link{
+    margin: 0 4px;
+    font-size: 1.4rem;
+    /* margin-left: 12px; */
+    text-decoration: none  ;
+
+    
+}
+/* separate : ngăn cách */
+.gach{
+    height: 17px;
+    display: block;
+    border-left: 1px solid var(--border-color);
+    margin: 0px 16px 0;
+}
+.maudo{
+    color: #f53e2d;
+}
+.mauxam{
+    color: #999;
+}
+
+/* khung tìm kiếm */
+.header-with-search{
+   height: var( --header-width-search-height);
+   display: flex;
+   align-items: center;
+   margin-top: 10px;
+   margin: 0 8px;
+   
+}
+
+.header__logo--img{
+    width: 150px;
+  
+}
+
+.header__logo{
+    width: 200px;
+
+}
+.header__search{
+    display: flex;
+    background-color: var(--white-color);
+    height: 40px;
+    flex: 1;
+    border-radius: 2px;;
+}
+.header__cart{
+    color: var(--white-color);
+    font-size: 2.5rem;
+    width: 150px;
+    text-align: center;
+    margin-top: 4px;
+}
+/* ô tìm kiếm */
+
+.header__search--input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    
+    padding: 0 16px;
+    border-radius: 3px;;
+}

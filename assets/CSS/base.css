@@ -1,0 +1,186 @@
+/* dựng cấu hình chug */
+:root{
+    --white-color: #ffff;
+    --black-color: #000;
+    --text-color: #333;
+    --primary-color: #FE5430;
+    --border-color: #dbdbdb;
+    --navbar-height:34px;
+    --header-height: 120px;
+    --header-width-search-height: calc((var(--header-height)) - (var(--navbar-height_)));
+}
+
+/* apply thuộc tính css lên phần tử html được nhúng file base.css */
+* {
+    box-sizing: inherit;
+    /* kế thừa lại từ thẻ chứa nó */
+}
+
+html{
+    /* cách chia như này gọi là HACK */
+    font-size: 62.5%;
+    /* font-size: 62.5% thì 1rem = 10px */
+    /* vậy 1.2rem == 12px và 1.6rem == 16px */
+    /* mặc định font-size: 100% sẽ bằng 16px*/
+
+    line-height: 1.6rem;
+    /* xét độ cao mặc định của dòng là 16px */
+    font-family: 'Roboto', sans-serif;
+    /* sans-serif: tập hợp những chủng k có chân 
+    khi fonts Roboto bị lỗi thì nó sẽ sử dụng sans-serif*/
+    box-sizing: border-box;
+    /* xét box-sizing cho thẻ html, tức là các thẻ trong file sẽ kế thừa thẻ này */
+
+}
+
+.grid{
+    width: 1200px;
+    max-width: 100%;
+    /*
+    -- xét 2 thuộc tính này vì khi màn hình lớn hơn 1200px thì 
+    kích thước tối đa của grid chỉ là 1200px
+    -- còn nếu màn hình có kích thước nhỏ hơn 1200px thì
+    kích thước của grid sẽ chiếm 100% màn hình trình duyệt */
+    margin: 0 auto;
+    /* tự động căn giữa khối này khi nó nằm trong 1 khối khác */
+
+
+}
+
+/* sử dụng trong trường hợp bạn k muốn sử dụng width = 1200px thì sẽ sử dụng class này để css lại */
+.grid__full-width{
+    width: 100%;
+}
+
+/* những thẻ nằm trong class này sẽ nằm ngang và khi độ dài của những item con mà vượt quá độ dàu của grid này thì nó sẽ tự động xuống dòng  */
+.grid__row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* animation */
+@keyframes fadeIn{
+   from{
+    opacity: 0;
+   }
+   to{
+    opacity: 1;
+   }
+}
+
+@keyframes growth{
+    from{
+        /* phóng to lêm */
+        transform: scale(var(--growth-from));
+       }
+       to{
+        transform: scale(var(--growth-to));
+       }
+}
+
+/* ô search */
+
+
+/* modal layout */
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    animation: fadeIn linear 0.1s;
+
+}
+.modal__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* màu đen là 0 0 0 */
+    background-color: rgba(0, 0, 0, 0.4);
+   
+    display: none;
+    
+}
+
+.modal_body{
+    /* trong thực tế thì k cần xét cũng được. khi ta điền phần content vào thì nó sẽ tự động giãn nở ra */
+    /* width: 400px;
+    height: 400px; */
+    background-color: var(--white-color);
+    margin: auto;
+    position: relative;
+    border-radius: 5px;
+    animation: growth linear 0.1s;
+    --growth-from: 0.7;
+    --growth-to: 0.3;
+
+    
+
+}
+
+/* nút trở lại */
+.auth-form__controls{
+    margin-top: 80px;
+
+}
+.btn{
+    min-width: 140px;
+    height: 36px;
+    border: none;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0 12px;
+    cursor: pointer;
+    color: var(--text-color);
+    margin: 4px;
+    display: flex;
+    /* căn ngang */
+    justify-content: center;
+    /* căn dọc */
+    align-items: center;
+    
+}
+
+.btn.btn--primary{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn.btn--primary:hover{
+    background-color:#ff4621 ;
+}
+
+.btn.btn--normal:hover{
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+.btn.btn--size-s{
+    height: 32px;
+    font-size: 12px;
+    min-width: 250px;
+   
+
+}
+
+/* 
+.btn.btn--primary.btn--disabled{
+    cursor: default;
+     giảm độ sáng của màu 
+    filter: brightness(500);
+
+} */
+/* màu cho chữ gg */
+.fa-google {
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  
+
+

@@ -1,0 +1,279 @@
+/* navbar */
+.nav {
+    min-height: 42px;
+    /* độ cao tối thiểu của header là 42px */
+    background-color: #EF5122;
+    /* xét màu nền cho header */
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-list {
+    padding-left: 0;
+    /* làm cho dính vào bên trái trình duyệt */
+    margin: auto 16px;
+    /* xét khoảng cách giữa 2 nav-list có T-B là tự điều chỉnh và L-R cách nhau 16px */
+}
+
+.nav-item {
+    color: #FFF;
+    /* xét màu chữ cho các li là nav-item trong ul là nav-list là màu trắng */
+    list-style: none;
+    /* dùng để bỏ đi dấu chấm mặc định đầu dòng khi xét thuộc tính ul cho các list */
+    margin: 0 8px;
+    /* xét khoảng cách giữa các li là các nav-list có B-T là 0 và R-L là 8px */
+    display: inline-block;
+    /* để cố thể sử dụng nhiều thuộc tính css trên 1 dòng hay 1 hàng */
+}
+
+/* form layout */
+.form-container {
+    max-width: 720px;
+    /* độ dài tối đa của form này là 720px */
+    padding: 32px;
+    /* padding của form sẽ là 32px */
+    margin: 36px auto 0 auto;
+    /* khoảng cách của form có T là 36px R là tùy chỉnh B là 0 L là tùy chỉnh */
+    background-color: #b89d9d;
+    /* xét màu nền cho cả form */
+    border-radius: 8px;
+    /* làm  cho viền cong tròn */
+}
+
+.form {}
+
+.form__row {
+    padding: 8px 0;
+    /* tạo khoảng cách đối với row form-row còn lại */
+    display: flex;
+    /* sử dụng thuộc tính flex xét main- axis theo chiều ngang */
+
+
+}
+
+.form__label {
+    padding: 8px 16px;
+    /* tạo khoảng cách trên dưới đối  */
+    min-width: 90px;
+    /* tạo chiều dài ngắn nhất để có khoảng cách bừng nhau đẹp mắt */
+
+}
+
+.form__input {
+    flex: 1;
+    /* tạo chiều dài tối đa cho khung viết chữ */
+    border-radius: 8px;
+    /* làm tròn viền khung input */
+    border-style: none;
+    /* bỏ kiểu viền của border */
+
+}
+
+/* Column layout */
+.column-layout {
+    margin-top: 36px;
+    /* tạo khoảng cách với form layout */
+    padding: 12px 0;
+    /* tạo khoảng cách với border có T-B là 12px và L-T là 0 */
+    background-color: rgb(240, 164, 164);
+    display: flex;
+
+}
+
+.column-item {
+    padding: 0 16px;
+    /* tạo khoảng cách giữa content với border có B-T là 0px và L-T là 16px */
+}
+
+.sidebar-one {
+    flex: 1;
+    /* chia tỉ lệ cho đoạn */
+    order: 1;
+    /* xét thứ tự hiển thị */
+}
+
+.main-column {
+    flex: 3;
+    /* chia tỉ lệ cho đoạn */
+    order: 3;
+}
+
+.sidebar-two {
+    flex: 1;
+    /* chia tỉ lệ cho đoạn */
+    order: 2;
+}
+
+/* Feature layout */
+.feature-layout {
+    margin-top: 36px;
+    /* tạo khoảng cách với column form */
+    background-color: rgb(243, 192, 179);
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+}
+
+/* PC-tablet */
+@media (min-width: 740px) {
+    .feature-layout {
+        flex-direction: row;
+    }
+}
+
+.feature-item {
+    padding: 12px 16px;
+    margin-top: 16px;
+
+
+    flex-basis: 30%;
+    /* dùng để xét khoảng cách của main size trong flex item */
+}
+
+.feature-item:nth-child(1) {
+    background-color: #d8cccc;
+
+}
+
+.feature-item:nth-child(3) {
+    background-color: #97e09a;
+
+}
+
+.feature-item:nth-child(2) {
+
+    background-color: #98c0ec;
+}
+
+/* Wrap layout */
+.wrap-layout {
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.wrap-layout__item {
+    background-color: #EF5122;
+    border-radius: 10px;
+    margin-top: 16px;
+    padding: 50px;
+    font-size: 50px;
+    font-weight: 700;
+    color: beige;
+}
+
+/* center layout */
+.center-layout {
+    margin: 36px auto 0 auto;
+    background: rgb(172, 165, 165);
+    padding: 32px 0;
+    width: 100%;
+    height: 360px;
+    display: flex;
+
+
+}
+
+.center-layout__item {
+    background-color: #82dad2;
+    font-size: 42px;
+    font-weight: 700;
+    margin: auto;
+    padding: 100px;
+
+
+}
+
+/* chart*/
+.chart-layout {
+    background-color: rgb(233, 231, 231);
+    margin: 36px auto 0 auto;
+    padding: 32px 0px;
+    height: 320px;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: flex-end; */
+
+
+
+}
+
+.chart-layout__item {
+    width: 60px;
+    color: #fff;
+    text-align: center;
+    height: var(--percent);
+    background-color: #EF5122;
+    align-self: flex-end;
+    animation: growth ease-in 0.5s;
+
+}
+
+/* animation */
+@keyframes growth {
+    from {
+        opacity: 0;
+        height: calc(var(--percent) -50%);
+    }
+
+    to {
+        opacity: 1;
+        height: var(--percent);
+    }
+}
+
+/* the end */
+.the-end {
+    margin: 12px auto 48px auto;
+    padding: 32px 0;
+    max-width: 740px;
+    min-height: 200px;
+    display: flex;
+
+}
+
+.the-end__first {
+    padding: 4px 16px;
+    background-color: #c3cace;
+    flex: 1;
+}
+
+.the-end__second {
+
+    flex: 1;
+    background-color: #ccf1d7;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.the-end__second-one {
+    background-color: #c3e6f7;
+    flex: 1;
+    padding: 4px 16px;
+}
+
+.the-end__second-two {
+    background-color: rgb(243, 192, 179);
+    flex: 1;
+    padding: 4px 16px;
+}
+
+
+/* 
+flex: 1;
+
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 1;
+
+search: flex css mozilla
+
+flex-flow: row wrap;
+
+flex-direction: row;
+flex-wrap: wrap;
+
+*/
