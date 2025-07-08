@@ -1629,6 +1629,7 @@ ta sử dụng flex-wrap : wrap và xét margin-left: 10px cho cả giá cũ và
     border-top: 4px solid var(--primary-color);
     padding-top: 16px;
     background-color: var(--white-color);
+    padding: 16px
 }
 
 .footer__heading {
