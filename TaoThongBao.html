@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="TaoThongBao.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+    <div class="q">
+        <!-- ban đầu là một trang trống -->
+        <div id="toast"></div>
+        <!-- <div class="toast toast--success">
+        <div class="toast__icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="toast__body">
+            <h3 class="title">Success</h3>
+            <p class="toast__msg">Merry Christmas- Giáng lành an lành</p>
+        </div>
+        <div class="toast__close">
+            <i class="fa-regular fa-circle-xmark"></i>
+        </div> -->
+    </div>
+    </div>
+    </div>
+    <div class="vt">
+        <div onclick="showSuccessToast();" class="btn btn--success">show success toast</div>
+        <div onclick="showErrorToast();" class="btn btn--error">show error toast</div>
+        <div onclick="showWarningToast();" class="btn btn--warning">show warning toast</div>
+        <div onclick="showInfoToast();" class="btn btn--info">show info toast</div>
+        <!-- onclick là mở ra khi nhấp chuột vào
+         -- dòng này nghĩa là đặt tên function cho khi kiện khi click chuột vào -->
+    </div>
+
+
+
+
+    <script>
+        // tạo function toast và truyền vào các tham số để lát gọi ra cho dễ
+
+        function toast({
+            title = '',
+            // để gọi tên sự kiện 
+            message = '',
+            // gọi mô tả
+            type = '',
+            // gọi tên loại sự kiên
+            duration = 3000
+            // thời gian xãy ra sự kiên là 3s
+        }) 
+        // khi gọi hàm toast đc gọi thì nó sẽ kiểm tra biến main -->> tiếp theo là đọc những
+        // thông tin truyền vào ở phía trên  và ra phần html 
+        
+        {
+            
+            const main = document.getElementById('toast');
+            // select cái id=toast. cái biến main có kiểu là const(hằng số: có giá trị không thay đổi)
+            if (main) {
+                const toast = document.createElement('div');
+                // tạo ra một thẻ div cha của toast
+
+                // auto remove toast
+                // phải để biến này lên trên toast.onclick vì nếu để dưới thì nó sẽ gây ra xung đột
+                // vì khi sau khoảng thg timeout thì nó sẽ gỡ lần nữa vì trước đó ta xét onclick thì nó đã gỡ 1 lần rồi
+                // sau khoảng thời gian duration (ẩn đi) 
+         
+                const autoRemoveId = setTimeout(function()
+                // tạo biến autoRemove cho thời gian timeout
+                {
+                    main.removeChild(toast);
+                    // thì sẽ remove cái toast
+                }, duration + 1000);
+                // tại sao phải đặt duration + 1000 vì thời gian timeout là 3s và làm mờ là 1s = 4s nên phải cộng thêm 1000
+                // khi xét biến này thì khi tb hiển thị ra và mất đi thì khối khác sẽ trôi lên trên đầu (thay vị trị của khối mất đi)
+
+
+                // remove toast when clicked
+                toast.onclick = function(e){
+                   if (e.target.closest('.toast__close'))
+                //    điều khi là khi click vào khối toast__close
+                    {
+                       main.removeChild(toast);
+                    //    thì nó sẽ remove cái toast - tắt tb
+                       clearTimeout(autoRemoveId)
+                    //    và tắt thời gian hiển thị 
+                   }
+                }
+                 // tạo ra một biến icon. và đặt tên theo từng icon để xíu gọi ra
+                const icons = {
+                    success: 'fa-solid fa-check',
+                    info: 'fa-solid fa-info',
+                    warning: 'fa-solid fa-triangle-exclamation',
+                    error: 'fa-solid fa-circle-exclamation',
+                };
+                const icon = icons[type];
+            //  lấy icon ra và truyền tham số type vào
+            // tức là khi type bằng tên icon nào thì nó sẽ hiển thị icon đó ra  
+                const delay =(duration / 1000).toFixed(2);
+            // làm tròn tham số duration về 3s thay vì 3000ms
+            // để tránh trường hợp có số thập phân thì ta thêm toFixed vào để lấy ra 2 số thập phân
+                
+                toast.classList.add('toast', `toast--${type}`);
+                // thêm cái class là toast vào và modifier của nó
+                // và đưa nội dung con của class toast vào bằng lệnh toast.innerHTML
+                
+                toast.style.animation = ` show 0.8s ease, hide linear 0.8s ${delay} forwards;`;
+                // khi ta thêm class cũng cần thêm kèm theo animation của nó vào
+                // truyền vòa tham số delay để: gọi biến delay sửa tham số thười gian
+                
+                // đưa nội dung con của class toast vào
+                toast.innerHTML = `  
+               
+                    <div class="toast__icon">
+                        <i class="${icon}"></i>
+                    </div>
+                    <div class="toast__body">
+                        <h3 class="title">${title}</h3>
+                    <p class="toast__msg" >${message}</p>
+                    </div>
+                    <div class="toast__close">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                  
+                        
+                `;
+                // ${tham số}: cú pháp truyền tham số vào 
+                main.appendChild(toast);
+                // ném class toast vào trong main sau khi đã thêm class toast và nd con vào
+                // thêm vào main để có thể chạy
+
+               
+            }
+        }
+
+        // gọi hàm chế biến nội dung trong khối toast
+        // khi ta click vào nút button thì hàm này sẽ được gọi ra để hiển thị một even (sự kiên) nào đó
+        // việc hiển thị này nó sẽ lấy khung từ class toast và thay đổi giá trị của tham số
+        function showErrorToast() {
+            toast({
+                title: 'Thất bại',
+                message: 'Oh Shit!',
+                type: 'error',
+                // kiểu quyết định
+                duration: 5000,
+                // khoảng thời gian ẩn là 3s
+            });
+        }
+        function showSuccessToast() {
+            toast({
+                title: 'Success 123',
+                message: 'Merry Christmas- Giáng  lành an lành',
+                type: 'success',
+                // kiểu quyết định
+                duration: 5000,
+                // khoảng thời gian ẩn
+            });
+        }
+
+
+        function showWarningToast() {
+            toast({
+                title: 'Cảnh báo',
+                message: 'Làm lại lần nữa đi!',
+                type: 'warning',
+                // kiểu quyết định
+                duration: 5000,
+                // khoảng thời gian ẩn
+            })
+        }
+        function showInfoToast() {
+            toast({
+                title: 'thông tin',
+                message: 'hhdkljdkhkdnhlk',
+                type: 'info',
+                // kiểu quyết định
+                duration: 5000,
+                // khoảng thời gian ẩn
+            })
+
+        }
+
+        // toast({
+        //     title: 'Success 123',
+        //     message: 'Merry Christmas- Giáng  lành an lành',
+        //     type: 'error',
+        //     // kiểu quyết định
+        //     duration: 3000,
+        //     // khoảng thời gian ẩn
+        // });
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
