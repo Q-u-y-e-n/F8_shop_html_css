@@ -7,6 +7,7 @@
     --border-color: #dbdbdb;
     --navbar-height: 34px;
     --header-height: 120px;
+    --header-sort-bar-height: 46px;
     --star-gold-color: #ffb400;
     --header-width-search-height: calc((var(--header-height)) - (var(--navbar-height_)));
 }
@@ -35,24 +36,7 @@ html {
 }
 
 /* Reponssive */
-.grid {
-    width: 1200px;
-    max-width: 100%;
-    /*
-    -- xét 2 thuộc tính này vì khi màn hình lớn hơn 1200px thì 
-    kích thước tối đa của grid chỉ là 1200px
-    -- còn nếu màn hình có kích thước nhỏ hơn 1200px thì
-    kích thước của grid sẽ chiếm 100% màn hình trình duyệt */
-    margin: 0 auto;
-    /* tự động căn giữa khối này khi nó nằm trong 1 khối khác */
 
-
-}
-
-/* sử dụng trong trường hợp bạn k muốn sử dụng width = 1200px thì sẽ sử dụng class này để css lại */
-.grid__full-width {
-    width: 100%;
-}
 
 /* những thẻ nằm trong class này sẽ nằm ngang và khi độ dài của những item con mà vượt quá độ dàu của grid này thì nó sẽ tự động xuống dòng  */
 .grid__row {
@@ -332,3 +316,20 @@ html {
     position: relative;
     top: 6px;
 }
+
+
+
+
+
+
+/* -----------------------RESPONSIVE----------------------------------- */
+
+/* --Tablet with breakpoint :  from 46.25em to 63.9375em */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+    .grid__column-2-4 {
+        width: 25%;
+    }
+}
+
+/* --Mobile with breakpoint : from 0 to 46.1875em  */
+@media only screen and (max-width: 46.1875em) {}
